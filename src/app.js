@@ -39,7 +39,7 @@ app.set('viewengine', 'ejs');
 
 
 // connecting db
-mongoose.connect(process.env.DATABASE_URL, {
+mongoose.connect('mongodb+srv://informaticsdidi:a9AHzu6UjVDFwth@mathapp.tf50bug.mongodb.net/?retryWrites=true&w=majority', {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
