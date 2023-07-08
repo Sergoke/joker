@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">NODE BLOG</a>
+    <a class="navbar-brand" href="/">Кумедіянт</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#blog-nav" aria-controls="blog-nav"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -8,33 +8,31 @@
     <!-- Collapsible content -->
     <div class="collapse navbar-collapse" id="blog-nav">
 
-        <% if(isAuthenticated) { %>
-
         <ul class="navbar-nav mr-auto">
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="/">Головна</a>
+            </li> -->
             <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/posts/add">Додати сетап</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/posts/add">Add Posts</a>
-            </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                     <a class="nav-link" href="/categories/add">Add Category</a>
-                </li>
+                </li> -->
         </ul>
 
-
+        <% if(isAuthenticated) { %>
         <span class="navbar-text white-text my-0 mr-4">
-            <a href="/users/logout">Logout</a>
+            <a href="/users/logout">Вийти</a>
         </span>
 
         <%} else { %>
         <ul class="navbar-nav ml-auto">
             <span class="navbar-text white-text my-0 mr-4">
-                <a href="/users/login">Login</a>
+                <a href="/users/login">Увійти</a>
             </span>
 
             <span class="navbar-text white-text my-0 mr-5">
-                <a href="/users/register">Register</a>
+                <a href="/users/register">Зареєструватись</a>
             </span>
         </ul>
         <%}%>

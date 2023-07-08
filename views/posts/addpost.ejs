@@ -4,17 +4,17 @@
 <main>
     <%- include('../partials/_messages.ejs') %>
 
-    <h1 class="mt-5 px-5"> Add New Post </h1>
+    <h1 class="mt-5 px-5"> Додати новий сетап </h1>
     <form action="/posts/add" method="post" class="border border-light p-5">
         <div class="form-group">
-            <label for="title">Title</label>
+            <label for="title">Сетап</label>
             <input name="title" type="text" class="form-control"
                 value="<%= typeof (title) != 'undefined' ? title : '' %>" required>
         </div>
 
 
         <div class="form-group">
-            <label>Category</label>
+            <label>Категорія</label>
             <select name="category" class="browser-default custom-select" required>
                 <% categories.forEach(category => { %>
                 <% if(category._id === posts.category) { %>
@@ -29,7 +29,7 @@
 
 
 
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="author">Author</label>
             <input name="author" type="text" class="form-control"
                 value="<%= typeof (author) != 'undefined' ? author : '' %>" required>
@@ -39,13 +39,13 @@
             <label for="body">Body</label>
             <textarea name="body" class="form-control rounded-0" id="body" rows="3"
                 required><%= typeof (body) != 'undefined' ?body : '' %></textarea>
-        </div>
+        </div> -->
 
-        <label>Main Image(Thumbnail)</label>
+        <!-- <label>Main Image(Thumbnail)</label>
         <input type="file" name="mainImage" class="filepond" accept="image/png, image/jpeg, image/gif">
-        </div>  
+        </div>   -->
 
-        <button type="submit" class="create-post btn btn-dark">Publish</button>
+        <button type="submit" class="create-post btn btn-dark">Опублікувати</button>
 
     </form>
 

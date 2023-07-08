@@ -15,7 +15,7 @@ router.post('/posts/addComment',checkAuthenticated, async(req, res) => {
       const content = {
          _id : commentId, 
           username : req.body.username,
-          email : req.body.email,  
+          // email : req.body.email,  
           comment : req.body.comment,
       }
 
@@ -24,7 +24,7 @@ router.post('/posts/addComment',checkAuthenticated, async(req, res) => {
         { $push : { comments : content }}
       )
 
-      await req.flash("success_msg", "Your comment has been updated successfully.");
+      await req.flash("success_msg", "Панчлайн додано");
 
     // Send socket message that new comment is created
      content.postId = req.body.postId
@@ -35,6 +35,26 @@ router.post('/posts/addComment',checkAuthenticated, async(req, res) => {
     } catch(err) {
       console.log(err)
     }
+})
+
+router.post('/posts/addLike',checkAuthenticated, async(req, res) => {
+  try {
+    const postId = req.body.postId;
+    const commentId = req.body.commentId;
+
+    const post = await Post.findById(postId);
+    const commentIndex = post.comments.findIndex(comment => comment._id.toString() === commentId);
+    if (commentIndex === -1) {
+      throw new Error('No comment with this comment._id');
+    }
+
+    post.comments[commentIndex].likes++;
+    await post.save();
+
+    res.redirect("/posts/" + req.body.postId);
+  } catch(err) {
+    console.log(err)
+  }
 })
 
 

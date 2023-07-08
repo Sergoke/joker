@@ -9,17 +9,23 @@ const commentSchema = new mongoose.Schema({
     minlength: 3,
     maxlength: 50
   },
-  email : {
-    type : String,
-    required : true,
-    minlength : 5,
-    maxlength : 255
-  },
+  // email : {
+  //   type : String,
+  //   required : true,
+  //   minlength : 5,
+  //   maxlength : 255
+  // },
   comment: {
     type: String,
     required: true,
     minlength: 3,
     maxlength: 10000
+  },
+  likes: {
+    type: Number,
+    required: true,
+    min: 0,
+    default: 0,
   },
   date : {
     type: Date,

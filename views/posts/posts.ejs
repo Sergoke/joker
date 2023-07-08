@@ -10,14 +10,7 @@
         <div class="card m-5 p-4">
             <div class="card-body">
                 <h2 class="card-title bg-light"><%= post.title %> </h2>  
-                <img class="main-image" height="270px" src="<%= post.mainImagePath %>" /><br />
-                <hr/>
-                <%- post.body.substring(0, 460) %>...
-                <hr/>
-                <a href="/posts/<%=post._id%>" class="btn btn-dark">View Full Post</a>
-                <hr />
-                 Posted by <b><%=post.author %></b> on <b><%= post.date %></b>
-                <hr/>
+                <a href="/posts/<%=post._id%>" class="btn btn-dark">Переглянути</a>
             </div>
         </div>
     <% }) %> 

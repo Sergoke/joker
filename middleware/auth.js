@@ -1,6 +1,7 @@
 // check if user is logged in if they want to access the route
 
 function checkAuthenticated(req, res, next) {
+  return next();
   if (req.isAuthenticated()) {
     return next();
   }

@@ -9,7 +9,8 @@ const {checkAuthenticated, checkNotAuthenticated} = require('../middleware/auth'
   
 router.get('/', checkNotAuthenticated, (req, res) => {
    try {
-        res.render('index.ejs')
+        // res.render('index.ejs')
+        res.redirect('/posts')
    }    catch(err) {
        console.log(err)
    }

@@ -16,26 +16,6 @@ const postSchema = new mongoose.Schema({
     required: true,
     ref : 'Category'
   },
-  author: {
-    type: String,
-    required: true,
-    minlength: 3,
-    maxlength: 50
-  },
-  body: {
-    type: String,
-    required: true,
-    minlength: 20,
-    maxlength: 10000
-  },
-  mainImage: {
-    type: Buffer,
-    required: true
-  },
-  mainImageType: {
-    type : String,
-    required: true
-  },
   date: {
     type: Date,
     default: Date.now
@@ -46,11 +26,11 @@ const postSchema = new mongoose.Schema({
 });
 
 
-postSchema.virtual('mainImagePath').get(function() {
-    if (this.mainImage != null && this.mainImageType != null) {
-      return `data:${this.mainImageType};charset=utf-8;base64,${this.mainImage.toString('base64')}`
-    }
-})
+// postSchema.virtual('mainImagePath').get(function() {
+//     if (this.mainImage != null && this.mainImageType != null) {
+//       return `data:${this.mainImageType};charset=utf-8;base64,${this.mainImage.toString('base64')}`
+//     }
+// })
 
 
 const Post = mongoose.model("Post", postSchema);
@@ -60,23 +40,23 @@ function validatePost(post) {
   const schema = Joi.object({
     title: Joi.string()
       .min(3)
-      .max(50)
+      .max(150)
       .required(),
     category: Joi.string()
       .min(3)
       .max(50)
       .required(),
-    author: Joi.string()
-      .min(3)
-      .max(50)
-      .required(),
+    // author: Joi.string()
+    //   .min(3)
+    //   .max(50)
+    //   .required(),
 
-      body: Joi.string()
-      .min(20)
-      .max(10000)
-      .required(),
+    //   body: Joi.string()
+    //   .min(20)
+    //   .max(10000)
+    //   .required(),
 
-      mainImage : Joi.any().required()
+    //   mainImage : Joi.any().required()
   });
 
   return schema.validate(post); 
