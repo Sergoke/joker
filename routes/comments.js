@@ -49,6 +49,7 @@ router.post('/posts/addLike',checkAuthenticated, async(req, res) => {
     }
 
     post.comments[commentIndex].likes++;
+    post.comments = post.comments.sort((a, b) => b.likes - a.likes);
     await post.save();
 
     res.redirect("/posts/" + req.body.postId);

@@ -9,8 +9,42 @@
     <% posts.forEach(post => { %>
         <div class="card m-5 p-4">
             <div class="card-body">
-                <h2 class="card-title bg-light"><%= post.title %> </h2>  
-                <a href="/posts/<%=post._id%>" class="btn btn-dark">Переглянути</a>
+                <h3 class="card-title"><%= post.title %> </h3>
+
+                <% comment = post.comments[0] %>
+                <% if (comment) { %>
+                    <hr>
+                    <div>
+                        <h5 class="mt-0"> <%= comment.comment%> </h5>
+                        <div style="font-size: 10pt">
+                            <%
+                                const currentDate = new Date(comment.date);
+                                const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Month starts from 0
+                                const day = String(currentDate.getDate()).padStart(2, '0');
+                                const hours = String(currentDate.getHours()).padStart(2, '0');
+                                const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+                                const shortDate = `${month}.${day} ${hours}:${minutes}`;
+                            %>
+                            <div class="text-muted"> 
+                                <span class="mr-3"><%= shortDate %></span>
+
+                                <form action="/posts/addLike" method="POST" style="display: inline">
+                                    <input type="hidden" name="postId" value="<%= post._id %>"></input>
+
+                                    <button type="submit" name="commentId" value="<%= comment._id %>" class="btn btn-link p-0 m-0 text-decoration-none">
+                                        <i class="bi bi-hand-thumbs-up"></i>
+                                        <span style="font-size: 10pt;"><%= comment.likes %></span>
+                                    </button>
+                                </form>
+
+                                <i class="ml-3 justify-content-end"><%= comment.username %></i> 
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center">...</p>
+                <% } %>
+
+                <a href="/posts/<%=post._id%>" class="btn btn-dark">Інші панчлайни</a>
             </div>
         </div>
     <% }) %> 

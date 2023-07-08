@@ -35,7 +35,6 @@
 
             <!-- Comments display-->
             <section class="mt-4" id="comments">
-                <% post.comments = post.comments.sort((a, b) => b.likes - a.likes) %>
                 <% post.comments.forEach((comment) => {  %>
                 <div class="media mb-2 px-4 py-2 cyan lighten-5 border border-info">
                     <!-- <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="user" /> -->
