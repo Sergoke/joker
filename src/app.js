@@ -96,6 +96,9 @@ app.use(userRouter)
 const categoryRouter = require('../routes/categories')
 app.use(categoryRouter)
 
+const articlesRouter = require('../routes/articles')
+app.use(articlesRouter)
+
 const errorRouter = require('../routes/error')
 app.use(errorRouter)
 
