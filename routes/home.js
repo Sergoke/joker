@@ -7,13 +7,16 @@ const {Post} = require('../models/post')
  
 const {checkAuthenticated, checkNotAuthenticated} = require('../middleware/auth')
   
-router.get('/', checkNotAuthenticated, (req, res) => {
-   try {
-        // res.render('index.ejs')
-        res.redirect('/posts')
-   }    catch(err) {
-       console.log(err)
-   }
+router.get('/', checkNotAuthenticated, async (req, res) => {
+    try {
+        let posts = await Post.find().sort({'comments.0.likes': -1});
+  
+        res.render('posts/posts.ejs', {  
+            posts : posts
+        })
+    }   catch(err) {
+        console.log(err)
+    }
 })
 
 
