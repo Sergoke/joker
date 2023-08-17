@@ -19,9 +19,17 @@ router.get('/setup', checkAuthenticated, async (req, res) => {
     }
 })
 
-  router.get('/punchline', checkAuthenticated, async (req, res) => {  
+router.get('/punchline', checkAuthenticated, async (req, res) => {  
     try {
         res.render('articles/punchline.ejs');
+    }   catch(err) {
+        console.log(err)
+    }
+})
+
+router.get('/why-no-one-laughs', checkAuthenticated, async (req, res) => {  
+    try {
+        res.render('articles/why-no-one-laughs.ejs');
     }   catch(err) {
         console.log(err)
     }
